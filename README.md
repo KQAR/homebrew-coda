@@ -65,8 +65,14 @@ Third-party taps may do that; homebrew-core may not, which is the whole reason t
 repository exists.
 
 Builds up to and including 0.0.1 are signed ad-hoc rather than with a Developer ID. Two
-consequences, both temporary: macOS asks for local network permission again after every
-upgrade, and a disk image downloaded in a browser arrives quarantined, which Gatekeeper
-refuses as "damaged" until the flag comes off —
-`xattr -dr com.apple.quarantine /Applications/coda.app`. Homebrew itself stopped quarantining
-what it installs in 7.0, so the commands above need nothing of the sort.
+consequences, both temporary. macOS asks for local network permission again after every
+upgrade. And the app arrives quarantined however you install it, which Gatekeeper refuses as
+"damaged" — so clear the flag before you open it:
+
+```sh
+xattr -dr com.apple.quarantine /Applications/coda.app
+```
+
+Homebrew is not the one setting it: 7.0 stopped quarantining what it installs and deleted
+`--no-quarantine` with it. macOS is, carrying the flag out of the disk image the cask
+downloads. A Developer ID signature is what removes the instruction, not a brew option.

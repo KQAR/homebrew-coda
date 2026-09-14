@@ -66,13 +66,15 @@ cask "coda" do
   caveats do
     <<~EOS
       This build is signed ad-hoc, not with a Developer ID, and Gatekeeper refuses an ad-hoc
-      bundle that carries the quarantine flag — as "damaged", which it is not. Homebrew does
-      not set that flag any more (`--no-quarantine` went with Homebrew 7, which stopped
-      quarantining what it installs), so the copy it just put in /Applications opens as it
-      is. A disk image downloaded in a browser is a different story — the browser sets the
-      flag — and there it has to come off by hand.
+      bundle that carries the quarantine flag — as "damaged", which it is not. Clear it
+      before you open the app:
 
         xattr -dr com.apple.quarantine /Applications/coda.app
+
+      Homebrew is not the one setting it. 7.0 stopped quarantining what it installs and
+      deleted `--no-quarantine` with it — but macOS carries the flag out of the disk image
+      this arrived in, so the copy in /Applications has one anyway (measured on 0.0.1, macOS
+      27). A disk image you download in a browser needs the same line, for the older reason.
 
       Then open it. It lives in the menu bar and has no Dock icon; use **Pairing code…** in
       its menu and scan that with coda on your phone.
