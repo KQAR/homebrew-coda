@@ -64,7 +64,7 @@ coda is closed source, so this tap ships prebuilt binaries rather than a source 
 Third-party taps may do that; homebrew-core may not, which is the whole reason this
 repository exists.
 
-Builds up to and including 0.0.1 are signed ad-hoc rather than with a Developer ID. Two
+Builds up to and including 0.0.2 are signed ad-hoc rather than with a Developer ID. Two
 consequences, both temporary. macOS asks for local network permission again after every
 upgrade. And the app arrives quarantined however you install it, which Gatekeeper refuses as
 "damaged" — so clear the flag before you open it:
