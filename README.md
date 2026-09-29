@@ -76,3 +76,6 @@ xattr -dr com.apple.quarantine /Applications/coda.app
 Homebrew is not the one setting it: 7.0 stopped quarantining what it installs and deleted
 `--no-quarantine` with it. macOS is, carrying the flag out of the disk image the cask
 downloads. A Developer ID signature is what removes the instruction, not a brew option.
+
+From 0.0.3 every build is signed with a Developer ID and notarised — the disk image stapled —
+so none of the above applies to it.

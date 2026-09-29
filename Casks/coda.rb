@@ -12,14 +12,14 @@
 # The stanza order below is Homebrew's, not a preference: `brew style`'s Cask/StanzaOrder cop
 # rejects any other, and `livecheck` in particular belongs above `depends_on`.
 cask "coda" do
-  version "0.0.2"
-  sha256 "32be8754dbaf994ba235a6003c3ea9cc076adfdc2392a317b10af7032378b832"
+  version "0.0.3"
+  sha256 "781eb6a2e3ce4c814fcd28407172278ad7f6e50b1c488065c3f38c98376d6abd"
 
   # `#{version}` rather than the whole URL spelled out: `brew audit` reads a url that does not
   # mention the version as an *unversioned* one and asks for `sha256 :no_check`, which would
   # mean shipping an image nothing checks. The tag is substituted whole because a packaging
   # revision moves it and not the version (`server/release.sh --revision=`).
-  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.2/coda-#{version}.dmg"
+  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.3/coda-#{version}.dmg"
   name "coda"
   # No platform in a cask's description — `brew style`'s Cask/Desc cop rejects "Mac", which
   # is how the formula next door words the same sentence.
@@ -65,18 +65,7 @@ cask "coda" do
 
   caveats do
     <<~EOS
-      This build is signed ad-hoc, not with a Developer ID, and Gatekeeper refuses an ad-hoc
-      bundle that carries the quarantine flag — as "damaged", which it is not. Clear it
-      before you open the app:
-
-        xattr -dr com.apple.quarantine /Applications/coda.app
-
-      Homebrew is not the one setting it. 7.0 stopped quarantining what it installs and
-      deleted `--no-quarantine` with it — but macOS carries the flag out of the disk image
-      this arrived in, so the copy in /Applications has one anyway (measured on 0.0.1, macOS
-      27). A disk image you download in a browser needs the same line, for the older reason.
-
-      Then open it. It lives in the menu bar and has no Dock icon; use **Pairing code…** in
+      Open it. It lives in the menu bar and has no Dock icon; use **Pairing code…** in
       its menu and scan that with coda on your phone.
 
       It serves udp/51820 and attaches to the Herdr and Orca sessions you already run — it

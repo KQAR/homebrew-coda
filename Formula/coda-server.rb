@@ -11,8 +11,8 @@
 class CodaServer < Formula
   desc "Host daemon for coda: drive the coding agents on your Mac from your phone"
   homepage "https://github.com/KQAR/homebrew-coda"
-  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.2/coda-server-0.0.2-arm64.tar.gz"
-  sha256 "8452a6e3c60a1734a1e8d5d12caadad9ae80f559efa3b1a3c6c0b58ad1afe6be"
+  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.3/coda-server-0.0.3-arm64.tar.gz"
+  sha256 "554184e0d8af6e0d6afc0807f333cfec2018f6260a71999a0f2ee716eed09396"
 
   # Apple silicon only. The tarball carries one slice; an x86_64 one that nothing here can
   # execute would be a claim rather than support (`server/release.sh`), and without this a
@@ -55,9 +55,6 @@ class CodaServer < Formula
 
       Do not also install the coda app: it carries this binary inside it, and two listeners
       would share udp/51820 rather than refuse it.
-
-      This build is signed ad-hoc, not with a Developer ID, so macOS asks for local network
-      permission again after every upgrade.
     EOS
   end
 
