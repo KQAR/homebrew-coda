@@ -12,14 +12,14 @@
 # The stanza order below is Homebrew's, not a preference: `brew style`'s Cask/StanzaOrder cop
 # rejects any other, and `livecheck` in particular belongs above `depends_on`.
 cask "coda" do
-  version "0.0.3"
-  sha256 "781eb6a2e3ce4c814fcd28407172278ad7f6e50b1c488065c3f38c98376d6abd"
+  version "0.0.4"
+  sha256 "909775bd7ea10a004d36ed8076fd54ba1becc9a4188a59062d6bcd1a77e717ee"
 
   # `#{version}` rather than the whole URL spelled out: `brew audit` reads a url that does not
   # mention the version as an *unversioned* one and asks for `sha256 :no_check`, which would
   # mean shipping an image nothing checks. The tag is substituted whole because a packaging
   # revision moves it and not the version (`server/release.sh --revision=`).
-  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.3/coda-#{version}.dmg"
+  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.4/coda-#{version}.dmg"
   name "coda"
   # No platform in a cask's description — `brew style`'s Cask/Desc cop rejects "Mac", which
   # is how the formula next door words the same sentence.
@@ -78,8 +78,8 @@ cask "coda" do
 
       You do not also need `coda-server`: this app carries it. That formula is for a machine
       with no graphical session, where a status item cannot run. Do not run both — one port,
-      and a listener that would share it rather than refuse it. The app looks before it binds
-      and will tell you whose port it is, with an offer to take it over.
+      one daemon. Each looks before it binds: the app tells you whose port it is and offers
+      to take it over, and `coda-server run` waits (or, in a terminal, refuses).
     EOS
   end
 end
