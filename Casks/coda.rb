@@ -12,14 +12,14 @@
 # The stanza order below is Homebrew's, not a preference: `brew style`'s Cask/StanzaOrder cop
 # rejects any other, and `livecheck` in particular belongs above `depends_on`.
 cask "coda" do
-  version "0.0.4"
-  sha256 "909775bd7ea10a004d36ed8076fd54ba1becc9a4188a59062d6bcd1a77e717ee"
+  version "0.0.5"
+  sha256 "aa2d3011a88f497d672d06c588ba68cdb32b2513fcc29bc2b22622058b46570d"
 
   # `#{version}` rather than the whole URL spelled out: `brew audit` reads a url that does not
   # mention the version as an *unversioned* one and asks for `sha256 :no_check`, which would
   # mean shipping an image nothing checks. The tag is substituted whole because a packaging
   # revision moves it and not the version (`server/release.sh --revision=`).
-  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.4/coda-#{version}.dmg"
+  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.5/coda-#{version}.dmg"
   name "coda"
   # No platform in a cask's description — `brew style`'s Cask/Desc cop rejects "Mac", which
   # is how the formula next door words the same sentence.
@@ -71,12 +71,7 @@ cask "coda" do
       It serves udp/51820 and attaches to the Herdr and Orca sessions you already run — it
       never starts one of its own. Its state, including the host key, is in ~/.coda.
 
-      **Install agent hooks…**, also in its menu, is what makes the phone learn that an agent
-      is waiting rather than finding out on the next poll. It shows you the change to
-      ~/.claude/settings.json before writing it, and the command it writes lives inside this
-      app — so moving or removing coda means installing them again.
-
-      You do not also need `coda-server`: this app carries it. That formula is for a machine
+      You do not also need `coda-server`: this app is the daemon. That formula is for a machine
       with no graphical session, where a status item cannot run. Do not run both — one port,
       one daemon. Each looks before it binds: the app tells you whose port it is and offers
       to take it over, and `coda-server run` waits (or, in a terminal, refuses).
