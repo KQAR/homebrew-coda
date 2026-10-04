@@ -11,8 +11,8 @@
 class CodaServer < Formula
   desc "Host daemon for coda: drive the coding agents on your Mac from your phone"
   homepage "https://github.com/KQAR/homebrew-coda"
-  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.6/coda-server-0.0.6-arm64.tar.gz"
-  sha256 "254b7445b8488f232e748e9eb4a8ec1a627a500475266b998649407999146383"
+  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.7/coda-server-0.0.7-arm64.tar.gz"
+  sha256 "d72f0cd99e9dcef91557e4f9a4aa3496a41cc1b2dde37fcee5c9ceb6da1d3a3f"
 
   # Apple silicon only. The tarball carries one slice; an x86_64 one that nothing here can
   # execute would be a claim rather than support (`server/release.sh`), and without this a
@@ -27,6 +27,7 @@ class CodaServer < Formula
 
   def install
     bin.install "coda-server"
+    (share/"coda").install "sim-runner.tar.gz" if File.exist?("sim-runner.tar.gz")
   end
 
   service do

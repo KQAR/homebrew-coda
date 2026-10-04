@@ -12,14 +12,14 @@
 # The stanza order below is Homebrew's, not a preference: `brew style`'s Cask/StanzaOrder cop
 # rejects any other, and `livecheck` in particular belongs above `depends_on`.
 cask "coda" do
-  version "0.0.6"
-  sha256 "1f12e804698e44a6cdf4b882a7d7c45c6fcd32c31a90fd3d3e22a2449e7e6b38"
+  version "0.0.7"
+  sha256 "3b3986fa534cfd7bf6341ced40e2519bb976eec68b910fa012d0848a74586e3a"
 
   # `#{version}` rather than the whole URL spelled out: `brew audit` reads a url that does not
   # mention the version as an *unversioned* one and asks for `sha256 :no_check`, which would
   # mean shipping an image nothing checks. The tag is substituted whole because a packaging
   # revision moves it and not the version (`server/release.sh --revision=`).
-  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.6/coda-#{version}.dmg"
+  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.7/coda-#{version}.dmg"
   name "coda"
   # No platform in a cask's description — `brew style`'s Cask/Desc cop rejects "Mac", which
   # is how the formula next door words the same sentence.
