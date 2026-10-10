@@ -11,8 +11,8 @@
 class CodaServer < Formula
   desc "Host daemon for coda: drive the coding agents on your Mac from your phone"
   homepage "https://github.com/KQAR/homebrew-coda"
-  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.12/coda-server-0.0.12-arm64.tar.gz"
-  sha256 "baf5915a94edac9d7003648dec48c9000cf00932e02ad9ebd441fa9f1b4142b5"
+  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.13/coda-server-0.0.13-arm64.tar.gz"
+  sha256 "c507c7894f0c1d1b6f1df84dd4f4dbbabbe74e70e5ef6ba667d4556074f626db"
 
   # Apple silicon only. The tarball carries one slice; an x86_64 one that nothing here can
   # execute would be a claim rather than support (`server/release.sh`), and without this a

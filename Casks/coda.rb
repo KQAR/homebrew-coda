@@ -12,14 +12,14 @@
 # The stanza order below is Homebrew's, not a preference: `brew style`'s Cask/StanzaOrder cop
 # rejects any other, and `livecheck` in particular belongs above `depends_on`.
 cask "coda" do
-  version "0.0.12"
-  sha256 "e7b3d56289e525d0dc1381fe788e5c00c27e2d443bb0ade66ce8d41cf724234c"
+  version "0.0.13"
+  sha256 "d2d39a5adb8c33b78d3789ecbf988e93119d81629971372f304426459e34f08a"
 
   # `#{version}` rather than the whole URL spelled out: `brew audit` reads a url that does not
   # mention the version as an *unversioned* one and asks for `sha256 :no_check`, which would
   # mean shipping an image nothing checks. The tag is substituted whole because a packaging
   # revision moves it and not the version (`server/release.sh --revision=`).
-  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.12/coda-#{version}.dmg"
+  url "https://github.com/KQAR/homebrew-coda/releases/download/v0.0.13/coda-#{version}.dmg"
   name "coda"
   # No platform in a cask's description — `brew style`'s Cask/Desc cop rejects "Mac", which
   # is how the formula next door words the same sentence.
@@ -43,6 +43,10 @@ cask "coda" do
   # Apple silicon, because the image carries one slice: an x86_64 one that nothing here can
   # execute would be a claim rather than support (`server/release.sh`). Without this, an Intel
   # Mac installs an app that will not launch.
+  # The app updates itself (Sparkle, `Updater`), so `brew upgrade` leaves it alone unless asked
+  # with `--greedy` — otherwise the two would take turns replacing one bundle, and Homebrew's
+  # idea of the installed version would be whichever of them went last.
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :tahoe
 
